@@ -30,14 +30,16 @@ export class ProgressBar extends PureComponent {
                 <ProgressBarLine 
                     progress={(currentCheckpoint + 1) * this.progressSteps}
                 />
-                {checkpointList.map(text => (
-                    <ProgressBarCheckpoint 
-                        id={checkpointList.indexOf(text) + 1} 
-                        title={text} 
-                        location={currentCheckpoint + 1}
-                        key={text} 
-                    />
-                ))}
+                <div className="ProgressBarCheckpointWrapper">
+                    {checkpointList.map(text => (
+                        <ProgressBarCheckpoint 
+                            id={checkpointList.indexOf(text) + 1} 
+                            title={text} 
+                            location={currentCheckpoint + 1}
+                            key={text} 
+                        />
+                    ))}
+                </div>
             </div>
         );
     }

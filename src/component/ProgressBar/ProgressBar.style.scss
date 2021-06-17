@@ -2,9 +2,17 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     height: 90px;
     background: var(--breadcrumbs-background);
+
+    .ProgressBarCheckpointWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 0 80px;
+    }
 
     @include before-desktop {
         display: none;
