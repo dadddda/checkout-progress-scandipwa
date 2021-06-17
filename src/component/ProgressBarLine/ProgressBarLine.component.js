@@ -13,14 +13,23 @@ export class ProgressBarLine extends PureComponent {
         initProgress: 0
     };
 
+    componentDidMount() {
+        const {progress} = this.props;
+        const lineElement = this.lineRef.current;
+        lineElement.style.backgroundPosition = `${100 - Math.round(progress)}%`;
+    }
+
+    componentDidUpdate() {
+        const {progress} = this.props;
+        const lineElement = this.lineRef.current;
+        lineElement.style.backgroundPosition = `${100 - Math.round(progress)}%`;
+    }
+
     render() {
-        const {
-            initProgress,
-            destProgress
-        } = this.props;
+        this.lineRef = React.createRef();
 
         return (
-            <div className="ProgressBarLine"></div>
+            <div ref={this.lineRef} className="ProgressBarLine"></div>
         );
     }
 };

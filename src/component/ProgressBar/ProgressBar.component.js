@@ -9,25 +9,32 @@ import './ProgressBar.style';
 /** @namespace Component/ProgressBar/Component */
 export class ProgressBar extends PureComponent {
     static propTypes = {
-        titleList: PropTypes.array.isRequired
+        checkpointList: PropTypes.array.isRequired,
+        currentCheckpoint: PropTypes.number
+    };
+
+    static defaultProps = {
+        currentCheckpoint: 0
     };
 
     render() {
         const {
-            titleList
+            checkpointList,
+            currentCheckpoint
         } = this.props;
+
+        this.progressSteps = 100 / (checkpointList.length + 1);
 
         return (
             <div className="ProgressBar">
                 <ProgressBarLine 
-                    initProgress={0} 
-                    destProgress={50}
+                    progress={(currentCheckpoint + 1) * this.progressSteps}
                 />
-                {titleList.map(text => (
+                {checkpointList.map(text => (
                     <ProgressBarCheckpoint 
-                        id={titleList.indexOf(text) + 1} 
+                        id={checkpointList.indexOf(text) + 1} 
                         title={text} 
-                        location={1}
+                        location={currentCheckpoint + 1}
                         key={text} 
                     />
                 ))}

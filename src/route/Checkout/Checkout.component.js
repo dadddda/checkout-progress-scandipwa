@@ -109,6 +109,7 @@ export class Checkout extends PureComponent {
         const { checkoutStep, history } = this.props;
         const { url } = this.stepMap[checkoutStep];
 
+        this.currentCheckpoint = 0;
         this.updateHeader();
 
         history.replace(appendWithStoreCode(`${ CHECKOUT_URL }${ url }`));
@@ -138,6 +139,9 @@ export class Checkout extends PureComponent {
     updateStep() {
         const { checkoutStep, history } = this.props;
         const { url } = this.stepMap[checkoutStep];
+
+        if (checkoutStep === BILLING_STEP) this.currentCheckpoint = 1;
+        else this.currentCheckpoint = 2;
 
         history.push(appendWithStoreCode(`${ CHECKOUT_URL }${ url }`));
     }
@@ -352,7 +356,10 @@ export class Checkout extends PureComponent {
     render() {
         return (
             <main block="Checkout">
-                <ProgressBar titleList={["Shipping", "Review & Payment"]} />
+                <ProgressBar 
+                    checkpointList={["Shipping", "Review & Payment"]}
+                    currentCheckpoint={this.currentCheckpoint}
+                />
                 <ContentWrapper
                   wrapperMix={ { block: 'Checkout', elem: 'Wrapper' } }
                   label={ __('Checkout page') }
