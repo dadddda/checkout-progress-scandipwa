@@ -1,26 +1,36 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
+import ProgressBarLine from 'Component/ProgressBarLine';
+import ProgressBarCheckpoint from 'Component/ProgressBarCheckpoint';
+
 import './ProgressBar.style';
 
 /** @namespace Component/ProgressBar/Component */
 export class ProgressBar extends PureComponent {
     static propTypes = {
-        text: PropTypes.string.isRequired
+        titleList: PropTypes.array.isRequired
     };
-
-    // static defaultProps = {
-    //     text: ""
-    // };
 
     render() {
         const {
-            text
+            titleList
         } = this.props;
 
         return (
             <div className="ProgressBar">
-                {text}
+                <ProgressBarLine 
+                    initProgress={0} 
+                    destProgress={50}
+                />
+                {titleList.map(text => (
+                    <ProgressBarCheckpoint 
+                        id={titleList.indexOf(text) + 1} 
+                        title={text} 
+                        location={1}
+                        key={text} 
+                    />
+                ))}
             </div>
         );
     }

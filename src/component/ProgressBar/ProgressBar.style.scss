@@ -1,9 +1,10 @@
 .ProgressBar {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 40px;
-    background: $default-primary-base-color;
+    justify-content: space-evenly;
+    height: 80px;
+    background: var(--breadcrumbs-background);
 
     @include before-desktop {
         display: none;
