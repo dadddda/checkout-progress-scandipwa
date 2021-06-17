@@ -16,6 +16,7 @@
         color: $white;
         background: $default-primary-base-color;
         border: 10px solid var(--breadcrumbs-background);
+        transition: all .5s ease-in-out;
     }
 
     .Title {
@@ -23,16 +24,19 @@
         font-weight: bold;
         margin-bottom: 10px;
         color: $black;
+        transition: all .5s ease-in-out;
     }
 
     &.Grayed {
         .Id {
             color:rgb(150, 150, 150);
             background: rgb(190, 190, 190);
+            transition: all .5s ease-in-out;
         }
 
         .Title {
             color: rgb(150, 150, 150);
+            transition: all .5s ease-in-out;
         }
     }
 }

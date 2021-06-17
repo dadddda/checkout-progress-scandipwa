@@ -8,5 +8,6 @@
     background: rgb(190, 190, 190);
     background: linear-gradient(90deg, $default-primary-base-color 50%, rgb(190, 190, 190) 50%);
     background-size: 200%;
-    background-position: 80%;
+    background-position: 100%;
+    transition: background-position 1s ease-in-out;
 }
