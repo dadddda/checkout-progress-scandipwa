@@ -1,0 +1,11 @@
+.ProgressBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background: $default-primary-base-color;
+
+    @include before-desktop {
+        display: none;
+    }
+}
