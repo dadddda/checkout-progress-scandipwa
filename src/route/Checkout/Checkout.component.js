@@ -118,7 +118,7 @@ export class Checkout extends PureComponent {
     componentDidUpdate(prevProps) {
         const { checkoutStep } = this.props;
         const { checkoutStep: prevCheckoutStep } = prevProps;
-
+    
         if (checkoutStep !== prevCheckoutStep) {
             this.updateHeader();
             this.updateStep();
@@ -140,8 +140,10 @@ export class Checkout extends PureComponent {
         const { checkoutStep, history } = this.props;
         const { url } = this.stepMap[checkoutStep];
 
-        this.currentCheckpoint += 1;
-
+        if (checkoutStep === SHIPPING_STEP) this.currentCheckpoint = 0;
+        else if (checkoutStep === BILLING_STEP) this.currentCheckpoint = 1;
+        else this.currentCheckpoint = 2;
+        
         history.push(appendWithStoreCode(`${ CHECKOUT_URL }${ url }`));
     }
 
