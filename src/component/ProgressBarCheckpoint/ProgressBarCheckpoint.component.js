@@ -23,10 +23,11 @@ export class ProgressBarCheckpoint extends PureComponent {
         } = this.props;
 
         const isGrayed = id > location ? "Grayed" : "";
+        const isFinished = id < location ? "\u2713" : id;
 
         return (
-            <div className={"ProgressBarCheckpoint " + isGrayed}>
-                <span className="Id">{id}</span>
+            <div className={"ProgressBarCheckpoint " + isGrayed + isFinished}>
+                <span className="Id">{isFinished}</span>
                 <span className="Title">{title}</span>
             </div>
         );
